@@ -1,14 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const morganSetting = process.env.NODE_ENV === 'production' ? 'tiny' : 'common';
-app.use(morgan(morganSetting));
 const cors = require('cors');
 const helmet = require('helmet');
 const MOVIEDEX = require('./movieDex.json');
 
 const app = express();
 
-app.use(morgan('dev'));
+app.use(morgan(morganSetting));
 app.use(helmet());
 app.use(cors());
 
