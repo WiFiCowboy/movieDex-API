@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-const morgan = require('morgan');
+const morganSetting = process.env.NODE_ENV === 'production' ? 'tiny' : 'common';
+app.use(morgan(morganSetting));
 const cors = require('cors');
 const helmet = require('helmet');
 const MOVIEDEX = require('./movieDex.json');
@@ -38,7 +39,7 @@ app.get('/movies', function handleGetMovies(req, res) {
 	res.json(response);
 });
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
 	console.log(`Port is listening on http://localhost:${PORT}`);
