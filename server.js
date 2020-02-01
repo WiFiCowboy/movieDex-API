@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const morganSetting = process.env.NODE_ENV === 'production' ? 'tiny' : 'common';
 const cors = require('cors');
+const morgan = require('morgan');
 const helmet = require('helmet');
 const MOVIEDEX = require('./movieDex.json');
 
